@@ -18,7 +18,7 @@ RUN apt-get -qq update \
   && apt-get -qq clean
 
 ARG VERSION
-ARG DIST=focal-$VERSION
+ARG DIST=focal-current
 ARG REPO=https://artifactory.niis.org/xroad-release-deb
 ARG REPO_KEY=https://artifactory.niis.org/api/gpg/key/public
 ARG COMPONENT=main
