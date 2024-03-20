@@ -76,10 +76,10 @@ RUN rm -f \
   && mv /usr/share/xroad/jlib/addon/proxy/opmonitoring.conf /usr/share/xroad/jlib/addon/proxy/opmonitoring.conf.disabled \
   && mv /usr/share/xroad/jlib/addon/proxy/proxymonitor-service.conf /usr/share/xroad/jlib/addon/proxy/proxymonitor-service.conf.disabled
 
-COPY --chown=root:root files/_entrypoint_common.sh /root/
-COPY --chown=root:root files/slim-ss-entrypoint.sh /root/entrypoint.sh
+COPY --chown=root:root files/_entrypoint_common.sh /usr/local/bin/xroad/
+COPY --chown=root:root files/slim-ss-entrypoint.sh /usr/local/bin/xroad/entrypoint.sh
 COPY --chown=root:root files/slim-ss-xroad.conf /etc/supervisor/conf.d/xroad.conf
 
-CMD ["/root/entrypoint.sh"]
+CMD ["/usr/local/bin/xroad/entrypoint.sh"]
 
 EXPOSE 8080 8443 4000 5500 5577 5588
