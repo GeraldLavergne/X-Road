@@ -1,4 +1,4 @@
-ARG VERSION
+ARG VERSION=7.4.2
 ARG TAG=niis/xroad-security-server-sidecar
 FROM $TAG:$VERSION-slim
 RUN mv /usr/share/xroad/jlib/addon/proxy/messagelog.conf.disabled /usr/share/xroad/jlib/addon/proxy/messagelog.conf  \
