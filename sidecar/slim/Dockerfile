@@ -17,8 +17,8 @@ RUN apt-get -qq update \
   && apt-get -qq install postgresql postgresql-contrib \
   && apt-get -qq clean
 
-ARG VERSION
-ARG DIST=focal-current
+ARG VERSION=7.4.2
+ARG DIST=focal-$VERSION
 ARG REPO=https://artifactory.niis.org/xroad-release-deb
 ARG REPO_KEY=https://artifactory.niis.org/api/gpg/key/public
 ARG COMPONENT=main
@@ -76,10 +76,10 @@ RUN rm -f \
   && mv /usr/share/xroad/jlib/addon/proxy/opmonitoring.conf /usr/share/xroad/jlib/addon/proxy/opmonitoring.conf.disabled \
   && mv /usr/share/xroad/jlib/addon/proxy/proxymonitor-service.conf /usr/share/xroad/jlib/addon/proxy/proxymonitor-service.conf.disabled
 
-COPY --chown=root:root files/_entrypoint_common.sh /usr/local/bin/xroad/
-COPY --chown=root:root files/slim-ss-entrypoint.sh /usr/local/bin/xroad/entrypoint.sh
+COPY --chown=root:root files/_entrypoint_common.sh /usr/local/bin/
+COPY --chown=root:root files/slim-ss-entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY --chown=root:root files/slim-ss-xroad.conf /etc/supervisor/conf.d/xroad.conf
 
-CMD ["/usr/local/bin/xroad/entrypoint.sh"]
+CMD ["/usr/local/bin/entrypoint.sh"]
 
 EXPOSE 8080 8443 4000 5500 5577 5588
