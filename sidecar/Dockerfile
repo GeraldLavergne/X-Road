@@ -7,7 +7,9 @@ RUN mv /usr/share/xroad/jlib/addon/proxy/messagelog.conf.disabled /usr/share/xro
 
 RUN chgrp -R 0 /root && \
     chmod -R g=u /root
+USER root
 
 COPY files/ss-entrypoint.sh /root/entrypoint.sh
 COPY --chown=root:root files/ss-xroad.conf /etc/supervisor/conf.d/xroad.conf
 CMD ["/root/entrypoint.sh"]
+USER 1001
