@@ -1,6 +1,9 @@
 FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 
+RUN chgrp -R 0 /root && \
+    chmod -R g=u /root
+
 RUN apt-get -qq update \
     && apt-get -qq upgrade \
     && apt-get -qq install \
